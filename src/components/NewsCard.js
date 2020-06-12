@@ -46,7 +46,7 @@ const NewsCard = ({ article: { description, publishedAt, source, title, url, url
         </CardActionArea>
         <CardActions>
           <Button size="small" color="primary">Learn More</Button>
-          <Typography variant="body2" color="textSecondary" component="h2">{i}</Typography>
+          <Typography variant="body2" color="textSecondary" component="h2">{i + 1}</Typography>
         </CardActions>
       </Card>
     </Grid>
