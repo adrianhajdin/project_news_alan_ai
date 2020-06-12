@@ -1,0 +1,20 @@
+#root, html, body {
+    height: 100vh;
+}
+
+body {
+    margin: 0;
+    text-align: center;
+    background-color: whitesmoke;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.alanLogo {
+    height: 30vmin;
+    border-radius: 15%;
+    padding: 0 5%;
+    margin: 20px 0;
+}

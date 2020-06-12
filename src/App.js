@@ -1,93 +1,47 @@
-import React, { useCallback, useEffect } from 'react';
-
+import React, { useState, useEffect } from 'react';
 import alanBtn from '@alan-ai/alan-sdk-web';
 
-let alanBtnInstance;
+import { Typography } from '@material-ui/core';
+import NewsCards from './components/NewsCards';
 
-function App() {
+const App = () => {
+  const [activeArticle, setActiveArticle] = useState(0);
+  const [newsArticles, setNewsArticles] = useState([]);
 
   useEffect(() => {
-    alanBtnInstance = alanBtn({
-      key: "203870619348b47e4d0bf347580da6fd2e956eca572e1d8b807a3e2338fdd0dc/stage"
+    alanBtn({
+      key: '64370f4c903e66c5b517887fefa45c1b2e956eca572e1d8b807a3e2338fdd0dc/stage',
+      onCommand: ({ command, articles, number }) => {
+        if (command === 'newHeadlines') {
+          console.log('DOGODILO SE POSTAVLJANJE');
+          if (articles.length) {
+            setNewsArticles(articles);
+            setActiveArticle(-1);
+          }
+        } else if (command === 'highlight') {
+          setActiveArticle((prevActiveArticle) => prevActiveArticle + 1);
+        } else if (command === 'open') {
+          console.log(number, newsArticles);
+          console.log(articles);
+          window.open(`${articles[number - 1].url}`, '_blank');
+          // setActiveArticle((prevActiveArticle) => prevActiveArticle + 1);
+        }
+      },
     });
   }, []);
 
-  const activateCb = useCallback(() => {
-    alanBtnInstance.activate();
-  }, []);
-
-  const deactivateCb = useCallback(() => {
-    alanBtnInstance.deactivate();
-  }, []);
-
-  const activateAndPlayTextCb = useCallback(async () => {
-    await alanBtnInstance.activate();
-    alanBtnInstance.playText("Nice to meet you");
-  }, []);
-
-  const callProjectApiCb = useCallback(async () => {
-    alanBtnInstance.callProjectApi("sendAnswer", { answer: 'correct' }, (err, data) => {
-      console.log(err, data);
-    });
-  }, []);
+  console.log(newsArticles);
 
   return (
-    <div className="App">
-      <h1>Alan SDK Web Api Test</h1>
-      <Card>
-        <ListGroup variant="flush">
-          <ListGroup.Item>
-            <Button onClick={activateCb}>activate();</Button>
-            <br />
-            <br />
-            <div><b>Result:</b> Alan Button will be activated.</div>
-          </ListGroup.Item>
-          <ListGroup.Item>
-            <Button onClick={deactivateCb}>deactivate();</Button>
-            <br />
-            <br />
-            <div><b>Result:</b> Alan Button will be deactivated.</div>
-          </ListGroup.Item>
-          <ListGroup.Item>
-            <Button onClick={activateAndPlayTextCb}>activate(); and playText('Nice to meet you');</Button>
-            <br />
-            <br />
-            <div><b>Result:</b> Alan Button will be activated and text will be played.</div>
-          </ListGroup.Item>
-          <ListGroup.Item>
-            <Button onClick={callProjectApiCb}>callProjectApi();</Button>
-            <br />
-            <br />
-            <div><b>Result:</b> Alan Button calls "callProjectApi('"sendAnswer"');" method and send there answer "correct". Activate Alan Button and ask "Am I right?". The response will be "You are right"</div>
-            Alan Voice Script:
-            <pre><code>{
-              `
-projectAPI.sendAnswer = function(p, param, callback) {
-    p.userData.answer = param.answer;
-    callback(null,'answer was saved');
-};
- 
-intent("Am I right?", p => {
-    let answer = p.userData.answer;
-    switch (answer) {
-        case "correct":
-            p.play("You are right");
-            break;
-        case "incorrect":
-            p.play("You are wrong");
-            break;
-        default:
-            p.play("(Sorry,|) I have no data");
-    }
-});
-              `
-            }</code></pre>
-
-          </ListGroup.Item>
-        </ListGroup>
-      </Card>
-    </div >
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <div style={{ padding: '0 10%', display: 'flex', justifyContent: 'space-around', alignItems: 'center', width: '100%' }}>
+        <Typography variant="h5" component="h2">Try saying: "Give me the latest news."</Typography>
+        <img src="https://alan.app/voice/images/previews/preview.jpg" className="alanLogo" alt="logo" />
+        <Typography variant="h5" component="h2">Try saying: "Give me the latest news."</Typography>
+      </div>
+      <NewsCards articles={newsArticles} activeArticle={activeArticle} />
+    </div>
   );
-}
+};
 
 export default App;
