@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Grid, Card, CardActionArea, CardActions, CardContent, CardMedia, Button, Typography } from '@material-ui/core';
+import { Card, CardActionArea, CardActions, CardContent, CardMedia, Button, Typography } from '@material-ui/core';
 import classNames from 'classnames';
 
 const useStyles = makeStyles({
@@ -42,6 +42,7 @@ const useStyles = makeStyles({
 
 const NewsCard = ({ article: { description, publishedAt, source, title, url, urlToImage }, activeArticle, i }) => {
   const classes = useStyles();
+
   return (
     <Card className={classNames(classes.card, activeArticle === i ? classes.activeCard : null)}>
       <CardActionArea href={url}>
