@@ -291,11 +291,10 @@ const App = () => {
   return (
     <div>
       <div style={{ padding: '0 10%', display: 'flex', justifyContent: 'space-around', alignItems: 'center', width: '100%' }}>
-        <Typography variant="h5" component="h2">Try saying: "Give me the latest news."</Typography>
+        {/* <Typography variant="h5" component="h2">Try saying: "Give me the latest news."</Typography> */}
         <img src="https://alan.app/voice/images/previews/preview.jpg" className="alanLogo" alt="logo" />
-        <Typography variant="h5" component="h2">Try saying: "Give me the latest news."</Typography>
+        {/* <Typography variant="h5" component="h2">Try saying: "Give me the latest news."</Typography> */}
       </div>
-      {console.log(newsArticles)}
       <NewsCards articles={newsArticles} activeArticle={activeArticle} />
     </div>
   );
