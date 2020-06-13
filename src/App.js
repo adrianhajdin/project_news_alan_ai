@@ -39,7 +39,8 @@ const App = () => {
 
   return (
     <div>
-      <div style={{ padding: '0 10%', display: 'flex', justifyContent: 'space-around', alignItems: 'center', width: '100%' }}>
+      {/* column reverse */}
+      <div className="logoContainer">
         {newsArticles.length
           ? (
             <>
@@ -49,6 +50,7 @@ const App = () => {
           )
           : null}
         <img src="https://alan.app/voice/images/previews/preview.jpg" className="alanLogo" alt="logo" />
+
       </div>
       <NewsCards articles={newsArticles} activeArticle={activeArticle} />
       {/* <div className={classes.footer}>
