@@ -6,23 +6,28 @@ import { makeStyles } from '@material-ui/core/styles';
 import jsMasteryLogo from './3.png';
 import NewsCards from './components/NewsCards';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   footer: {
     textAlign: 'center',
     position: 'fixed',
     left: 0,
     bottom: 0,
-    color: 'white',
+    color: 'black',
     width: '100%',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     height: '120px',
+    [theme.breakpoints.down('sm')]: {
+      display: 'none',
+    },
   },
   link: {
     textDecoration: 'none',
-    color: '#22289a',
-    marginRight: 20,
+    color: 'rgba(21, 101, 192)',
+  },
+  image: {
+    marginLeft: 20,
   },
   card: {
     display: 'flex',
@@ -42,7 +47,7 @@ const useStyles = makeStyles({
     alignItems: 'center',
     justifyContent: 'space-around',
   },
-});
+}));
 const App = () => {
   const classes = useStyles();
 
@@ -79,8 +84,8 @@ const App = () => {
       <NewsCards articles={newsArticles} activeArticle={activeArticle} />
       {!newsArticles.length ? (
         <div className={classes.footer}>
-          <a className={classes.link} href="#a">Adrian Hajdin, JavaScript Mastery</a>
-          <img src={jsMasteryLogo} height="50px" />
+          <Typography variant="body1" component="h2">Created by <a className={classes.link} href="#a">Adrian Hajdin</a> - <a className={classes.link} href="#a">JavaScript Mastery</a></Typography>
+          <img className={classes.image} src={jsMasteryLogo} height="50px" />
         </div>
       ) : null}
     </div>
