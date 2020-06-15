@@ -12,7 +12,7 @@ body {
 }
 
 .logoContainer {
-    padding: 0 10%;
+    padding: 0 5%;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -20,7 +20,7 @@ body {
 }
 
 .alanLogo {
-    height: 30vmin;
+    height: 27vmin;
     border-radius: 15%;
     padding: 0 5%;
     margin: 3% 0;
@@ -36,4 +36,4 @@ body {
         flex-direction: column-reverse;
         text-align: center;
     }
-  }
+}

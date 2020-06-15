@@ -8,11 +8,39 @@ import NewsCards from './components/NewsCards';
 
 const useStyles = makeStyles({
   footer: {
-    position: 'fixed', bottom: 40, width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center',
+    textAlign: 'center',
+    position: 'fixed',
+    left: 0,
+    bottom: 0,
+    color: 'white',
+    width: '100%',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '120px',
   },
   link: {
     textDecoration: 'none',
     color: '#22289a',
+    marginRight: 20,
+  },
+  card: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '50%',
+    padding: '3%',
+    borderRadius: 10,
+    color: 'white',
+    backgroundColor: 'rgba(21, 101, 192)',
+    margin: '0 12px',
+    textAlign: 'center',
+    height: '25vmin',
+  },
+  infoContainer: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-around',
   },
 });
 const App = () => {
@@ -39,23 +67,22 @@ const App = () => {
 
   return (
     <div>
-      {/* column reverse */}
       <div className="logoContainer">
-        {newsArticles.length
-          ? (
-            <>
-              <Typography variant="h5" component="h2">Try saying: "Open article number 5."</Typography>
-              <Typography variant="h5" component="h2">Try saying: "Go back" or "Give me the instructions</Typography>
-            </>
-          )
-          : null}
+        {newsArticles.length ? (
+          <div className={classes.infoContainer}>
+            <div className={classes.card}><Typography variant="h5" component="h2">Try saying: <br /><br />Open article number [4]</Typography></div>
+            <div className={classes.card}><Typography variant="h5" component="h2">Try saying: <br /><br />Go back <br />Give me the instructions</Typography></div>
+          </div>
+        ) : null}
         <img src="https://alan.app/voice/images/previews/preview.jpg" className="alanLogo" alt="logo" />
-
       </div>
       <NewsCards articles={newsArticles} activeArticle={activeArticle} />
-      {/* <div className={classes.footer}>
-        <a className={classes.link} href="">Adrian Hajdin, JavaScript Mastery</a> <img src={jsMasteryLogo} height="50px" />
-      </div> */}
+      {!newsArticles.length ? (
+        <div className={classes.footer}>
+          <a className={classes.link} href="#a">Adrian Hajdin, JavaScript Mastery</a>
+          <img src={jsMasteryLogo} height="50px" />
+        </div>
+      ) : null}
     </div>
   );
 };
