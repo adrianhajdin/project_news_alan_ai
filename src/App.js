@@ -94,14 +94,14 @@ const App = () => {
 
   return (
     <div>
-      <div className="logoContainer">
+      <div className={classes.logoContainer}>
         {newsArticles.length ? (
           <div className={classes.infoContainer}>
             <div className={classes.card}><Typography variant="h5" component="h2">Try saying: <br /><br />Open article number [4]</Typography></div>
             <div className={classes.card}><Typography variant="h5" component="h2">Try saying: <br /><br />Go back <br />Give me the instructions</Typography></div>
           </div>
         ) : null}
-        <img src="https://alan.app/voice/images/previews/preview.jpg" className="alanLogo" alt="logo" />
+        <img src="https://alan.app/voice/images/previews/preview.jpg" className={classes.alanLogo} alt="logo" />
       </div>
       <NewsCards articles={newsArticles} activeArticle={activeArticle} />
       {!newsArticles.length ? (
