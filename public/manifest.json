@@ -1,23 +1,13 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Alan AI News",
+  "name": "Alan AI News App",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
+      "src": "https://is5-ssl.mzstatic.com/image/thumb/Purple115/v4/80/48/e3/8048e37d-0d91-b1c4-b52f-9a9f2a5b2519/source/512x512bb.jpg",
+      "sizes": "512x512",
       "type": "image/x-icon"
-    },
-    {
-      "src": "logo192.png",
-      "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "logo512.png",
-      "type": "image/png",
-      "sizes": "512x512"
     }
-  ],
+],
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",
