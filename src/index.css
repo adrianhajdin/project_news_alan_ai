@@ -10,30 +10,3 @@ body {
 * {
     box-sizing: border-box;
 }
-
-.logoContainer {
-    padding: 0 5%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
-}
-
-.alanLogo {
-    height: 27vmin;
-    border-radius: 15%;
-    padding: 0 5%;
-    margin: 3% 0;
-}
-
-@media only screen and (max-width: 600px) {
-    .alanLogo {
-        height: 20vh;
-        width: 100%;
-    }
-
-    .logoContainer {
-        flex-direction: column-reverse;
-        text-align: center;
-    }
-}

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 import alanBtn from '@alan-ai/alan-sdk-web';
 
-import { makeStyles } from '@material-ui/core/styles';
-import jsMasteryLogo from './3.png';
 import NewsCards from './components/NewsCards';
+import logo from './images/logo.png';
 
 const useStyles = makeStyles((theme) => ({
   footer: {
@@ -47,7 +47,29 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     justifyContent: 'space-around',
   },
+  logoContainer: {
+    padding: '0 5%',
+    display: 'flex',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    width: '100%',
+    [theme.breakpoints.down('sm')]: {
+      height: '20vh',
+      width: '100%',
+    },
+  },
+  alanLogo: {
+    height: '27vmin',
+    borderRadius: '15%',
+    padding: '0 5%',
+    margin: '3% 0',
+    [theme.breakpoints.down('sm')]: {
+      flexDirection: 'column-reverse',
+      textAlign: 'center',
+    },
+  },
 }));
+
 const App = () => {
   const classes = useStyles();
 
@@ -85,7 +107,7 @@ const App = () => {
       {!newsArticles.length ? (
         <div className={classes.footer}>
           <Typography variant="body1" component="h2">Created by <a className={classes.link} href="#a">Adrian Hajdin</a> - <a className={classes.link} href="#a">JavaScript Mastery</a></Typography>
-          <img className={classes.image} src={jsMasteryLogo} height="50px" />
+          <img className={classes.image} src={logo} height="50px" />
         </div>
       ) : null}
     </div>
