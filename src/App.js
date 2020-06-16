@@ -41,11 +41,23 @@ const useStyles = makeStyles((theme) => ({
     margin: '0 12px',
     textAlign: 'center',
     height: '25vmin',
+    [theme.breakpoints.down('sm')]: {
+      flexDirection: 'column-reverse',
+      textAlign: 'center',
+      width: '100%',
+      height: 'initial',
+      '&:nth-of-type(1)': {
+        marginBottom: '12px',
+      },
+    },
   },
   infoContainer: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-around',
+    [theme.breakpoints.down('sm')]: {
+      flexDirection: 'column',
+    },
   },
   logoContainer: {
     padding: '0 5%',
@@ -54,8 +66,8 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     width: '100%',
     [theme.breakpoints.down('sm')]: {
-      height: '20vh',
-      width: '100%',
+      flexDirection: 'column-reverse',
+      textAlign: 'center',
     },
   },
   alanLogo: {
@@ -64,9 +76,7 @@ const useStyles = makeStyles((theme) => ({
     padding: '0 5%',
     margin: '3% 0',
     [theme.breakpoints.down('sm')]: {
-      flexDirection: 'column-reverse',
-      textAlign: 'center',
-      height: '42vmin',
+      height: '35vmin',
     },
   },
 }));
