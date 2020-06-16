@@ -66,6 +66,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('sm')]: {
       flexDirection: 'column-reverse',
       textAlign: 'center',
+      height: '42vmin',
     },
   },
 }));
