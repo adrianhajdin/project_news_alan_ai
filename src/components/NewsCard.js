@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Card, CardActions, CardContent, CardMedia, Button, Typography } from '@material-ui/core';
 import classNames from 'classnames';
@@ -42,9 +42,23 @@ const useStyles = makeStyles({
 
 const NewsCard = ({ article: { description, publishedAt, source, title, url, urlToImage }, activeArticle, i }) => {
   const classes = useStyles();
+  const [elRefs, setElRefs] = React.useState([]);
+  const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop - 50);
+
+  React.useEffect(() => {
+    setElRefs((refs) => (
+      Array(20).fill().map((_, j) => refs[j] || React.createRef())
+    ));
+  }, []);
+
+  React.useEffect(() => {
+    if (i === activeArticle && elRefs[activeArticle]) {
+      scrollToRef(elRefs[activeArticle]);
+    }
+  }, [i, activeArticle]);
 
   return (
-    <Card className={classNames(classes.card, activeArticle === i ? classes.activeCard : null)}>
+    <Card ref={elRefs[i]} className={classNames(classes.card, activeArticle === i ? classes.activeCard : null)}>
       <CardMedia className={classes.media} image={urlToImage || 'https://www.industry.gov.au/sites/default/files/August%202018/image/news-placeholder-738.png'} title={title} />
       <div className={classes.details}>
         <Typography variant="body2" color="textSecondary" component="h2">{(new Date(publishedAt)).toDateString()}</Typography>
