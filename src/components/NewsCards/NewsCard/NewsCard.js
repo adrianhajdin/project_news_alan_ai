@@ -1,44 +1,8 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import { Card, CardActions, CardActionArea, CardContent, CardMedia, Button, Typography } from '@material-ui/core';
 import classNames from 'classnames';
 
-const useStyles = makeStyles({
-  media: {
-    height: 250,
-  },
-  border: {
-    border: 'solid',
-  },
-  fullHeightCard: {
-    height: '100%',
-  },
-  card: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-    borderBottom: '10px solid white',
-  },
-  activeCard: {
-    borderBottom: '10px solid #22289a',
-  },
-  grid: {
-    display: 'flex',
-  },
-  details: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    margin: '20px',
-  },
-  title: {
-    padding: '0 16px',
-  },
-  cardActions: {
-    padding: '0 16px 8px 16px',
-    display: 'flex',
-    justifyContent: 'space-between',
-  },
-});
+import useStyles from './styles';
 
 const NewsCard = ({ article: { description, publishedAt, source, title, url, urlToImage }, activeArticle, i }) => {
   const classes = useStyles();

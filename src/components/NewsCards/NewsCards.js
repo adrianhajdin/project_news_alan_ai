@@ -1,28 +1,8 @@
 import React from 'react';
 import { Grid, Grow, Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
 
-import NewsCard from '../NewsCard/NewsCard';
-
-const useStyles = makeStyles({
-  card: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    width: '100%',
-    height: '45vh',
-    padding: '10%',
-    borderRadius: 10,
-    color: 'white',
-  },
-  infoCard: {
-    display: 'flex', flexDirection: 'column', textAlign: 'center',
-  },
-  container: {
-    padding: '0 5%', width: '100%', margin: 0,
-  },
-});
+import NewsCard from './NewsCard/NewsCard';
+import useStyles from './styles.js';
 
 const infoCards = [
   { color: '#00838f', title: 'Latest News', text: 'Give me the latest news' },
