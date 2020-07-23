@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { Typography } from '@material-ui/core';
+import wordsToNumbers from 'words-to-numbers';
 import alanBtn from '@alan-ai/alan-sdk-web';
 
-import wordsToNumbers from 'words-to-numbers';
-import { NewsCards, Modal } from '..';
 import logo from '../../images/logo.png';
-
+import { NewsCards, Modal } from '..';
 import useStyles from './styles';
 
 const App = () => {
   const [activeArticle, setActiveArticle] = useState(0);
   const [newsArticles, setNewsArticles] = useState([]);
+  const [isOpen, setIsOpen] = useState(true);
+
   const classes = useStyles();
 
   useEffect(() => {
@@ -20,6 +21,8 @@ const App = () => {
         if (command === 'newHeadlines') {
           setNewsArticles(articles);
           setActiveArticle(-1);
+        } else if (command === 'instructions') {
+          setIsOpen(true);
         } else if (command === 'highlight') {
           setActiveArticle((prevActiveArticle) => prevActiveArticle + 1);
         } else if (command === 'open') {
@@ -41,10 +44,10 @@ const App = () => {
 
   return (
     <div>
-      <Modal />
       <div className={classes.logoContainer}>
         {newsArticles.length ? (
           <div className={classes.infoContainer}>
+            <Modal isOpen={isOpen} setIsOpen={setIsOpen} />
             <div className={classes.card}><Typography variant="h5" component="h2">Try saying: <br /><br />Open article number [4]</Typography></div>
             <div className={classes.card}><Typography variant="h5" component="h2">Try saying: <br /><br />Give me the instructions</Typography></div>
           </div>
@@ -52,12 +55,14 @@ const App = () => {
         <img src="https://alan.app/voice/images/previews/preview.jpg" className={classes.alanLogo} alt="logo" />
       </div>
       <NewsCards articles={newsArticles} activeArticle={activeArticle} />
+      <Modal isOpen={isOpen} setIsOpen={setIsOpen} />
+
       {!newsArticles.length ? (
         <div className={classes.footer}>
           <Typography variant="body1" component="h2">
             Created by
-            <a className={classes.link} href="https://www.linkedin.com/in/adrian-hajdin/">Adrian Hajdin</a> -
-            <a className={classes.link} href="http://youtube.com/javascriptmastery">JavaScript Mastery</a>
+            <a className={classes.link} href="https://www.linkedin.com/in/adrian-hajdin/"> Adrian Hajdin</a> -
+            <a className={classes.link} href="http://youtube.com/javascriptmastery"> JavaScript Mastery</a>
           </Typography>
           <img className={classes.image} src={logo} height="50px" />
         </div>
