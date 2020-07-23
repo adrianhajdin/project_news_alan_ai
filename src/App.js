@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import alanBtn from '@alan-ai/alan-sdk-web';
 
 import wordsToNumbers from 'words-to-numbers';
-import NewsCards from './components/NewsCards';
+import NewsCards from './components/NewsCards/NewsCards';
 import logo from './images/logo.png';
 
 const useStyles = makeStyles((theme) => ({
@@ -95,7 +95,6 @@ const App = () => {
         if (command === 'newHeadlines') {
           setNewsArticles(articles);
           setActiveArticle(-1);
-          console.log(articles);
         } else if (command === 'highlight') {
           setActiveArticle((prevActiveArticle) => prevActiveArticle + 1);
         } else if (command === 'open') {

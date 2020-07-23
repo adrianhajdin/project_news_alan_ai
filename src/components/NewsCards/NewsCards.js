@@ -2,7 +2,7 @@ import React from 'react';
 import { Grid, Grow, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
-import NewsCard from './NewsCard';
+import NewsCard from '../NewsCard/NewsCard';
 
 const useStyles = makeStyles({
   card: {
