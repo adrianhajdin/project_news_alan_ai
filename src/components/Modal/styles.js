@@ -34,6 +34,5 @@ export default makeStyles((theme) => ({
   form: {
     display: 'flex',
     flexDirection: 'column',
-    width: '400px',
   },
 }));

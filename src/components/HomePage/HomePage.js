@@ -10,7 +10,7 @@ import useStyles from './styles';
 const App = () => {
   const [activeArticle, setActiveArticle] = useState(0);
   const [newsArticles, setNewsArticles] = useState([]);
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   const classes = useStyles();
 
@@ -49,7 +49,7 @@ const App = () => {
           <div className={classes.infoContainer}>
             <Modal isOpen={isOpen} setIsOpen={setIsOpen} />
             <div className={classes.card}><Typography variant="h5" component="h2">Try saying: <br /><br />Open article number [4]</Typography></div>
-            <div className={classes.card}><Typography variant="h5" component="h2">Try saying: <br /><br />Give me the instructions</Typography></div>
+            <div className={classes.card}><Typography variant="h5" component="h2">Try saying: <br /><br />Give me the instructions<br /><br />Go back</Typography></div>
           </div>
         ) : null}
         <img src="https://alan.app/voice/images/previews/preview.jpg" className={classes.alanLogo} alt="logo" />
@@ -64,7 +64,7 @@ const App = () => {
             <a className={classes.link} href="https://www.linkedin.com/in/adrian-hajdin/"> Adrian Hajdin</a> -
             <a className={classes.link} href="http://youtube.com/javascriptmastery"> JavaScript Mastery</a>
           </Typography>
-          <img className={classes.image} src={logo} height="50px" />
+          <img className={classes.image} src={logo} height="50px" alt="JSMastery logo" />
         </div>
       ) : null}
     </div>
