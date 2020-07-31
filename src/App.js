@@ -3,8 +3,8 @@ import { Typography } from '@material-ui/core';
 import wordsToNumbers from 'words-to-numbers';
 import alanBtn from '@alan-ai/alan-sdk-web';
 
-import logo from '../../images/logo.png';
-import { NewsCards, Modal } from '..';
+import logo from './images/logo.png';
+import { NewsCards, Modal } from './components';
 import useStyles from './styles';
 
 const App = () => {
@@ -56,7 +56,6 @@ const App = () => {
       </div>
       <NewsCards articles={newsArticles} activeArticle={activeArticle} />
       <Modal isOpen={isOpen} setIsOpen={setIsOpen} />
-
       {!newsArticles.length ? (
         <div className={classes.footer}>
           <Typography variant="body1" component="h2">

@@ -1,8 +1,7 @@
 import React from 'react';
+import { Typography, Divider, Chip, TextField, Button } from '@material-ui/core';
 import SimpleModal from '@material-ui/core/Modal';
 import emailjs from 'emailjs-com';
-
-import { Typography, Divider, Chip, TextField, Button } from '@material-ui/core';
 
 import useStyles from './styles';
 
@@ -14,11 +13,7 @@ const Modal = ({ isOpen, setIsOpen, showFeedback }) => {
     e.preventDefault();
 
     emailjs.sendForm('gmail', 'alan_ai', e.target, 'user_dhVImkgxaL27bxQ8pLPQ5')
-      .then((result) => {
-        console.log(result.text);
-      }, (error) => {
-        console.log(error.text);
-      });
+      .then((result) => { console.log(result.text); }, (error) => { console.log(error.text); });
   };
 
   if (isOpen && showFeedback) {
@@ -47,14 +42,12 @@ const Modal = ({ isOpen, setIsOpen, showFeedback }) => {
           <div className={classes.chipContainer}>{['Business', 'Entertainment', 'General', 'Health', 'Science', 'Sports', 'Technology'].map((category) => <Chip label={category} color="primary" className={classes.chip} />)}</div>
         </div>
         <Typography variant="body1" className={classes.trySaying}>Try saying: &quot;Give me the latest <strong><em>Business</em></strong> news&quot;</Typography>
-
         <Divider />
         <div className={classes.infoContainer}>
           <Typography variant="h5">News by Terms</Typography>
           <div className={classes.chipContainer}>{['Donald Trump', 'Bitcoin', 'PlayStation 5', 'Smartphones'].map((term) => <Chip label={term} color="primary" className={classes.chip} />)}<Chip label="...and more" className={classes.chip} /></div>
         </div>
         <Typography variant="body1" className={classes.trySaying}>Try saying: &quot;What&apos;s up with <strong><em>PlayStation 5</em></strong>&quot;</Typography>
-
         <Divider />
         <div className={classes.infoContainer}>
           <Typography variant="h5">News by Sources</Typography>
