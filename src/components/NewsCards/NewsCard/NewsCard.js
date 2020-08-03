@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, createRef } from 'react';
 import { Card, CardActions, CardActionArea, CardContent, CardMedia, Button, Typography } from '@material-ui/core';
 import classNames from 'classnames';
 
@@ -12,7 +12,7 @@ const NewsCard = ({ article: { description, publishedAt, source, title, url, url
   useEffect(() => {
     window.scroll(0, 0);
 
-    setElRefs((refs) => Array(20).fill().map((_, j) => refs[j] || React.createRef()));
+    setElRefs((refs) => Array(20).fill().map((_, j) => refs[j] || createRef()));
   }, []);
 
   useEffect(() => {
